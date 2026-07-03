@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Grow Your Business Online</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700;800&family=Manrope:wght@400;600;800&family=Baloo+2:wght@700;800&display=swap');
+
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html,body{width:100%;height:100%;overflow:hidden;background:#0a0e1a;font-family:'Manrope',sans-serif;}
+
+  #camera{position:relative;width:100vw;height:100vh;overflow:hidden;animation:camPunch 2.4s ease-in-out infinite;transform-origin:50% 60%;}
+  @keyframes camPunch{0%,100%{transform:scale(1);}50%{transform:scale(1.015);}}
+  #stage{position:relative;width:100%;height:100%;overflow:hidden;}
+
+  #sky{position:absolute;inset:0;background:linear-gradient(180deg,#2b2560 0%,#5a3d7a 22%,#9a5590 42%,#d97a8c 60%,#f2a97e 76%,#f7c98a 100%);animation:skyShift 12s ease-in-out infinite alternate;}
+  @keyframes skyShift{0%{filter:hue-rotate(0deg) brightness(1) saturate(1);}50%{filter:hue-rotate(14deg) brightness(1.12) saturate(1.25);}100%{filter:hue-rotate(-10deg) brightness(0.97) saturate(1);}}
+  #stars{position:absolute;inset:0;}
+  .star{position:absolute;border-radius:50%;background:#fff;animation:twinkle 2.2s ease-in-out infinite;}
+  @keyframes twinkle{0%,100%{opacity:.15;transform:scale(.8);}50%{opacity:1;transform:scale(1.5);}}
+  .firefly{position:absolute;width:5px;height:5px;border-radius:50%;background:radial-gradient(circle,#fff6d8 0%,#ffe9a8 40%,transparent 75%);box-shadow:0 0 12px 4px rgba(255,230,160,.9);animation:drift linear infinite;}
+  @keyframes drift{0%{transform:translate(0,0) scale(.6);opacity:0;}10%{opacity:1;}50%{transform:translate(var(--dx),calc(var(--dy) * -1)) scale(1.2);}90%{opacity:1;}100%{transform:translate(calc(var(--dx) * 1.6),calc(var(--dy) * -1.8)) scale(.4);opacity:0;}}
+  .burstRing{position:absolute;border:3px solid rgba(255,255,255,.7);border-radius:50%;pointer-events:none;animation:ringOut 1s ease-out forwards;}
+  @keyframes ringOut{0%{width:0;height:0;opacity:1;}100%{width:220px;height:220px;margin-left:-110px;margin-top:-110px;opacity:0;}}
+  .spark{position:absolute;width:6px;height:6px;border-radius:50%;background:#fff8d6;box-shadow:0 0 8px 3px rgba(255,240,180,.9);pointer-events:none;animation:sparkFly .9s ease-out forwards;}
+  @keyframes sparkFly{0%{transform:translate(0,0) scale(1);opacity:1;}100%{transform:translate(var(--sx),var(--sy)) scale(0);opacity:0;}}
+  #moon{position:absolute;top:8%;left:50%;width:140px;height:140px;transform:translateX(-50%);border-radius:50%;background:radial-gradient(circle,#fff7e0 0%,#ffe9c2 40%,transparent 70%);filter:blur(2px);opacity:.85;animation:pulseMoon 3s ease-in-out infinite;}
+  @keyframes pulseMoon{0%,100%{opacity:.7;transform:translateX(-50%) scale(1);}50%{opacity:1;transform:translateX(-50%) scale(1.15);}}
+  .hill{position:absolute;bottom:0;left:0;width:100%;}
+  #hillBack{animation:sway 6s ease-in-out infinite;}
+  #hillMid{animation:sway 5s ease-in-out infinite reverse;}
+  #hillFront{animation:sway 4s ease-in-out infinite;}
+  @keyframes sway{0%,100%{transform:translateX(0) translateY(0);}50%{transform:translateX(-2%) translateY(-6px);}}
+  #water{position:absolute;bottom:0;left:0;width:100%;height:22%;background:linear-gradient(180deg,rgba(60,80,150,.35),rgba(20,30,70,.75));}
+  .shimmer{position:absolute;height:2px;border-radius:2px;background:rgba(255,255,255,.6);animation:ripple 2s ease-in-out infinite;}
+  @keyframes ripple{0%,100%{opacity:0;transform:scaleX(.6);}50%{opacity:.9;transform:scaleX(1);}}
+
+  .character{position:absolute;filter:drop-shadow(0 0 16px rgba(255,255,255,.65)) drop-shadow(0 0 34px rgba(255,200,230,.35));}
+  #charLeft{left:8%;bottom:14%;width:34vw;max-width:420px;animation:jumpLeft 1.6s cubic-bezier(.45,0,.55,1) infinite;transform-origin:bottom center;}
+  #charRight{right:6%;bottom:20%;width:30vw;max-width:380px;animation:jumpRight 1.4s cubic-bezier(.45,0,.55,1) infinite .3s;transform-origin:bottom center;}
+  @keyframes jumpLeft{0%{transform:translateY(0) scaleY(1) scaleX(1) rotate(-2deg);}12%{transform:translateY(6px) scaleY(.85) scaleX(1.12) rotate(-2deg);}35%{transform:translateY(-70px) scaleY(1.12) scaleX(.9) rotate(4deg);}55%{transform:translateY(-70px) scaleY(1.05) scaleX(.95) rotate(6deg);}75%{transform:translateY(4px) scaleY(.88) scaleX(1.1) rotate(-3deg);}100%{transform:translateY(0) scaleY(1) scaleX(1) rotate(-2deg);}}
+  @keyframes jumpRight{0%{transform:translateY(0) scaleY(1) scaleX(1) rotate(2deg);}12%{transform:translateY(5px) scaleY(.86) scaleX(1.1) rotate(2deg);}38%{transform:translateY(-56px) scaleY(1.1) scaleX(.92) rotate(-5deg);}58%{transform:translateY(-56px) scaleY(1.04) scaleX(.96) rotate(-7deg);}78%{transform:translateY(3px) scaleY(.9) scaleX(1.08) rotate(3deg);}100%{transform:translateY(0) scaleY(1) scaleX(1) rotate(2deg);}}
+  .eye{animation:blink 3.2s infinite;}
+  .eye.delay{animation-delay:.15s;}
+  @keyframes blink{0%,90%,100%{transform:scaleY(1);}94%{transform:scaleY(.1);}}
+  .charOutline{fill:none;stroke:#fff;stroke-width:3.4;stroke-linecap:round;stroke-linejoin:round;opacity:.97;}
+  .charOutlineFaint{fill:none;stroke:#fff;stroke-width:1.6;stroke-linecap:round;opacity:.5;}
+  .charEye{fill:#2c2a55;}
+  .charBlush{fill:rgba(255,150,180,.4);}
+  .streak{position:absolute;bottom:12%;width:2px;height:26px;background:linear-gradient(180deg,transparent,rgba(255,255,255,.7));opacity:0;}
+  .streakLeft{left:16%;animation:streakGo 1.6s ease-in infinite;}
+  .streakRight{right:14%;animation:streakGo 1.4s ease-in infinite .3s;}
+  @keyframes streakGo{0%,60%{opacity:0;}68%{opacity:.9;height:40px;}80%{opacity:0;height:10px;}100%{opacity:0;}}
+  #critter{position:absolute;left:44%;bottom:16%;width:9vw;max-width:90px;filter:drop-shadow(0 0 10px rgba(255,255,255,.55));animation:critterSpin 2s ease-in-out infinite;}
+  @keyframes critterSpin{0%,100%{transform:translateY(0) rotate(0deg) scale(1);}25%{transform:translateY(-18px) rotate(15deg) scale(1.08);}50%{transform:translateY(-4px) rotate(-10deg) scale(.95);}75%{transform:translateY(-14px) rotate(8deg) scale(1.05);}}
+  .impact{position:absolute;width:90px;height:90px;background:radial-gradient(circle,rgba(255,255,255,.9) 0%,transparent 70%);opacity:0;transform:scale(.2);pointer-events:none;}
+  .impact.pop{animation:impactPop .5s ease-out;}
+  @keyframes impactPop{0%{opacity:1;transform:scale(.2) rotate(0deg);}100%{opacity:0;transform:scale(2.2) rotate(25deg);}}
+
+  .bubble{position:absolute;max-width:260px;background:rgba(255,255,255,.97);border-radius:20px;padding:14px 18px;font-family:'Baloo 2',cursive;font-weight:700;font-size:1.05rem;line-height:1.3;color:#2a2145;opacity:0;transform:scale(.3) rotate(-8deg) translateY(20px);box-shadow:0 10px 28px rgba(0,0,0,.3);pointer-events:none;transition:opacity .28s cubic-bezier(.34,1.76,.64,1), transform .28s cubic-bezier(.34,1.76,.64,1);}
+  .bubble.show{opacity:1;transform:scale(1) rotate(0deg) translateY(0);}
+  .bubble::after{content:'';position:absolute;width:0;height:0;border:12px solid transparent;}
+  .bubbleLeft{left:9%;bottom:46%;} .bubbleLeft::after{left:26px;bottom:-20px;border-top-color:rgba(255,255,255,.97);border-bottom:0;}
+  .bubbleRight{right:7%;bottom:56%;} .bubbleRight::after{right:30px;bottom:-20px;border-top-color:rgba(255,255,255,.97);border-bottom:0;}
+
+  #brandLayer{position:absolute;inset:0;background:radial-gradient(circle at 50% 30%, #0f2245 0%, #081326 70%, #060d1c 100%);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;opacity:0;pointer-events:none;transition:opacity .8s ease;overflow:hidden;}
+  #brandLayer.show{opacity:1;animation:brandZoom .6s ease-out;}
+  @keyframes brandZoom{0%{transform:scale(.92);}60%{transform:scale(1.02);}100%{transform:scale(1);}}
+  .chev{position:absolute;border:14px solid rgba(45,214,232,.06);border-right-color:transparent;border-bottom-color:transparent;transform:rotate(45deg);}
+  .chev1{width:220px;height:220px;top:-60px;right:-60px;animation:chevDrift 10s ease-in-out infinite;}
+  .chev2{width:160px;height:160px;bottom:-40px;left:-40px;border-color:rgba(45,214,232,.08);border-right-color:transparent;border-bottom-color:transparent;transform:rotate(225deg);animation:chevDrift 8s ease-in-out infinite reverse;}
+  @keyframes chevDrift{0%,100%{transform:rotate(45deg) translateY(0);}50%{transform:rotate(45deg) translateY(14px);}}
+  #logoMark{width:110px;height:auto;filter:drop-shadow(0 0 22px rgba(45,214,232,.55));opacity:0;transform:scale(.3) rotate(-15deg);animation:logoPop 1s cubic-bezier(.34,1.6,.64,1) forwards;}
+  #brandLayer.show #logoMark{animation:logoPop 1s cubic-bezier(.34,1.6,.64,1) forwards, logoFloat 2.6s ease-in-out 1s infinite;}
+  @keyframes logoPop{0%{opacity:0;transform:scale(.3) rotate(-15deg);}70%{opacity:1;transform:scale(1.12) rotate(4deg);}100%{opacity:1;transform:scale(1) rotate(0deg);}}
+  @keyframes logoFloat{0%,100%{transform:translateY(0);}50%{transform:translateY(-8px);}}
+  .brandTitle{font-family:'Space Grotesk',sans-serif;font-weight:800;font-size:clamp(1.9rem,5.4vw,3.2rem);letter-spacing:.01em;color:#fff;text-align:center;line-height:1.15;text-shadow:0 0 24px rgba(45,214,232,.25);opacity:0;transform:translateY(14px);animation:riseIn .6s ease .3s forwards;}
+  .brandTag{font-family:'Manrope',sans-serif;font-weight:600;font-size:clamp(.95rem,2.2vw,1.25rem);color:#3fd8ec;opacity:0;transform:translateY(10px);animation:riseIn .6s ease .5s forwards;}
+  @keyframes riseIn{to{opacity:1;transform:translateY(0);}}
+  .brandCTA{margin-top:18px;padding:14px 34px;border-radius:999px;background:linear-gradient(135deg,#2dd6e8,#20b8cf);color:#08182e;font-weight:800;font-family:'Manrope',sans-serif;letter-spacing:.01em;box-shadow:0 10px 30px rgba(45,214,232,.35);opacity:0;transform:scale(.7);animation:ctaIn .5s cubic-bezier(.34,1.6,.64,1) .8s forwards;}
+  #brandLayer.show .brandCTA{animation:ctaIn .5s cubic-bezier(.34,1.6,.64,1) .8s forwards, ctaPulse 1.6s ease-in-out 1.4s infinite;}
+  @keyframes ctaIn{to{opacity:1;transform:scale(1);}}
+  @keyframes ctaPulse{0%,100%{transform:scale(1);}50%{transform:scale(1.06);}}
+  .cornerSpark{position:absolute;bottom:8%;right:8%;width:14px;height:14px;opacity:.7;animation:twinkle 2s ease-in-out infinite;}
+  #skipHint{position:absolute;bottom:18px;right:22px;font-size:.75rem;color:rgba(255,255,255,.55);z-index:5;}
+</style>
+</head>
+<body>
+
+<div id="camera"><div id="stage">
+  <div id="sky"></div>
+  <div id="stars"></div>
+  <div id="moon"></div>
+
+  <svg id="hillBack" class="hill" viewBox="0 0 1440 300" preserveAspectRatio="none" style="height:34%;">
+    <path d="M0,180 C240,100 400,220 720,150 C1000,90 1200,200 1440,140 L1440,300 L0,300 Z" fill="#4b3d7a" opacity=".55"/>
+  </svg>
+  <svg id="hillMid" class="hill" viewBox="0 0 1440 300" preserveAspectRatio="none" style="height:26%;">
+    <path d="M0,220 C300,150 500,240 760,190 C1040,140 1240,230 1440,180 L1440,300 L0,300 Z" fill="#6a4a86" opacity=".7"/>
+  </svg>
+  <svg id="hillFront" class="hill" viewBox="0 0 1440 300" preserveAspectRatio="none" style="height:18%;">
+    <path d="M0,240 C260,200 460,260 740,220 C1020,180 1260,250 1440,210 L1440,300 L0,300 Z" fill="#3d2f63"/>
+  </svg>
+
+  <div id="water"></div>
+  <div class="streak streakLeft"></div>
+  <div class="streak streakRight"></div>
+
+  <svg id="charLeft" class="character" viewBox="0 0 300 420" xmlns="http://www.w3.org/2000/svg">
+    <path class="charOutline" d="M150,40 C120,10 90,20 95,55 C60,45 45,75 70,95 C40,105 40,140 75,145 C60,175 90,195 115,175 C120,205 155,215 165,185 C190,205 215,180 200,150 C230,140 225,105 195,100 C210,75 190,45 160,60 C165,25 130,15 150,40 Z"/>
+    <circle class="charEye" cx="128" cy="130" r="9"/>
+    <circle class="charEye eye" cx="160" cy="150" r="6"/>
+    <ellipse class="charBlush" cx="105" cy="150" rx="10" ry="6"/>
+    <path class="charOutline" d="M150,215 C140,260 130,300 120,340 C112,365 100,385 80,400"/>
+    <path class="charOutline" d="M150,215 C158,260 165,300 178,335 C190,362 205,382 225,398"/>
+  </svg>
+
+  <svg id="critter" viewBox="0 0 120 100" xmlns="http://www.w3.org/2000/svg">
+    <path class="charOutlineFaint" d="M20,70 C10,50 25,30 45,35 C55,15 85,15 90,35 C110,35 115,60 95,72 C100,88 75,95 60,85 C45,98 22,90 20,70 Z" fill="rgba(255,255,255,.14)"/>
+    <circle class="charEye" cx="48" cy="55" r="3.5"/>
+    <circle class="charEye" cx="66" cy="53" r="3.5"/>
+  </svg>
+
+  <svg id="charRight" class="character" viewBox="0 0 300 420" xmlns="http://www.w3.org/2000/svg">
+    <path class="charOutline" d="M170,30 C150,5 120,15 128,45 C95,35 75,60 95,85 C65,90 60,120 90,130 C75,155 100,180 128,162 C130,190 165,198 175,170 C205,185 228,160 210,135 C238,128 235,95 205,92 C218,68 198,40 170,55 C178,22 150,10 170,30 Z"/>
+    <circle class="charEye" cx="118" cy="108" r="7"/>
+    <circle class="charEye eye delay" cx="140" cy="120" r="7"/>
+    <path class="charOutline" d="M175,198 C168,240 158,275 148,310 C140,335 128,355 108,368"/>
+    <path class="charOutline" d="M175,198 C185,235 195,270 208,300 C220,328 235,348 255,362"/>
+    <path class="charOutline" d="M108,368 C90,378 70,378 55,368"/>
+  </svg>
+
+  <div id="impactL" class="impact" style="left:11%;bottom:44%;"></div>
+  <div id="impactR" class="impact" style="right:9%;bottom:54%;"></div>
+  <div id="b1" class="bubble bubbleLeft"></div>
+  <div id="b2" class="bubble bubbleRight"></div>
+
+  <div id="brandLayer">
+    <div class="chev chev1"></div>
+    <div class="chev chev2"></div>
+    <img id="logoMark" src="logo.png" alt="Logo">
+    <div class="brandTitle">Grow Your<br>Business Online</div>
+    <div class="brandTag">Digital Marketing &amp; Web Design</div>
+    <div class="brandCTA">Message Us Today</div>
+    <svg class="cornerSpark" viewBox="0 0 24 24"><path d="M12 0 L14 10 L24 12 L14 14 L12 24 L10 14 L0 12 L10 10 Z" fill="#4ee0f0"/></svg>
+  </div>
+
+  <div id="skipHint">tap to skip ahead</div>
+</div></div>
+
+<script>
+const stage = document.getElementById('stage');
+
+for(let i=0;i<90;i++){
+  const s=document.createElement('div');
+  s.className='star';
+  const size=Math.random()*2+0.6;
+  s.style.width=size+'px'; s.style.height=size+'px';
+  s.style.left=Math.random()*100+'%'; s.style.top=Math.random()*55+'%';
+  s.style.animationDelay=(Math.random()*2)+'s';
+  document.getElementById('stars').appendChild(s);
+}
+
+for(let i=0;i<26;i++){
+  const f=document.createElement('div');
+  f.className='firefly';
+  f.style.left=(10+Math.random()*80)+'%'; f.style.top=(50+Math.random()*40)+'%';
+  f.style.setProperty('--dx',(Math.random()*160-80)+'px');
+  f.style.setProperty('--dy',(60+Math.random()*120)+'px');
+  f.style.animationDuration=(4+Math.random()*5)+'s';
+  f.style.animationDelay=(Math.random()*4)+'s';
+  stage.appendChild(f);
+}
+
+const water=document.getElementById('water');
+for(let i=0;i<10;i++){
+  const r=document.createElement('div');
+  r.className='shimmer';
+  r.style.left=(Math.random()*90)+'%'; r.style.top=(Math.random()*90)+'%';
+  r.style.width=(40+Math.random()*80)+'px';
+  r.style.animationDelay=(Math.random()*3)+'s';
+  water.appendChild(r);
+}
+
+function burst(){
+  const x = 20 + Math.random()*60, y = 30 + Math.random()*40;
+  const ring=document.createElement('div');
+  ring.className='burstRing';
+  ring.style.left=x+'%'; ring.style.top=y+'%';
+  stage.appendChild(ring);
+  setTimeout(()=>ring.remove(),1000);
+  for(let i=0;i<10;i++){
+    const sp=document.createElement('div');
+    sp.className='spark';
+    sp.style.left=x+'%'; sp.style.top=y+'%';
+    const ang=Math.random()*Math.PI*2, dist=40+Math.random()*60;
+    sp.style.setProperty('--sx',Math.cos(ang)*dist+'px');
+    sp.style.setProperty('--sy',Math.sin(ang)*dist+'px');
+    stage.appendChild(sp);
+    setTimeout(()=>sp.remove(),900);
+  }
+}
+setInterval(burst, 1800);
+burst();
+
+/* the funny script — the part you loved */
+const script = [
+  {who:'b1', text:"Oh great, ANOTHER glowing rock. Be still, my heart."},
+  {who:'b2', text:"It's not a rock. It's a whole VIBE, Steve."},
+  {who:'b1', text:"...my name isn't Steve."},
+  {who:'b2', text:"It is now."},
+  {who:'b1', text:"Fine. So what are we supposed to do with the vibe?"},
+  {who:'b2', text:"Watch it glow. Feel something. Basic stuff."},
+  {who:'b1', text:"I feel something alright — it's called hunger."},
+  {who:'b2', text:"You always feel hunger, that's not a personality trait."},
+  {who:'b1', text:"It's my BEST trait. Anyway — who sent this thing?"},
+  {who:'b2', text:"Some marketing crew. Said they grow businesses online."},
+  {who:'b1', text:"Grow? Grow what, my anxiety about deadlines?"},
+  {who:'b2', text:"No, dummy. Brands. Websites. Actual real things people care about."},
+  {who:'b1', text:"Huh. So less 'glowing rock,' more 'glow up.'"},
+  {who:'b2', text:"...that was actually good. Don't let it go to your head."},
+  {who:'b1', text:"Too late. Head's already glowing."},
+  {who:'b2', text:"So is theirs, apparently. Look."}
+];
+
+const b1=document.getElementById('b1'), b2=document.getElementById('b2');
+const impactL=document.getElementById('impactL'), impactR=document.getElementById('impactR');
+const brandLayer=document.getElementById('brandLayer');
+let timers=[];
+function clearTimers(){ timers.forEach(t=>clearTimeout(t)); timers=[]; }
+function hideBubbles(){ b1.classList.remove('show'); b2.classList.remove('show'); }
+
+function typeInto(el, text, cb){
+  el.textContent=''; el.classList.add('show');
+  let idx=0; const speed=28;
+  function step(){
+    if(idx<=text.length){ el.textContent=text.slice(0,idx); idx++; timers.push(setTimeout(step,speed)); }
+    else if(cb){ timers.push(setTimeout(cb, 1200)); }
+  }
+  step();
+}
+
+function playLine(index){
+  if(index>=script.length){
+    timers.push(setTimeout(()=>{
+      brandLayer.classList.add('show');
+      timers.push(setTimeout(()=>{
+        brandLayer.classList.remove('show');
+        hideBubbles();
+        timers.push(setTimeout(()=>playLine(0), 900));
+      }, 6500));
+    }, 600));
+    return;
+  }
+  const line=script[index];
+  hideBubbles();
+  timers.push(setTimeout(()=>{
+    const isLeft = line.who==='b1';
+    const target = isLeft? b1 : b2;
+    const impact = isLeft? impactL : impactR;
+    impact.classList.remove('pop'); void impact.offsetWidth; impact.classList.add('pop');
+    typeInto(target, line.text, ()=>playLine(index+1));
+  }, 300));
+}
+playLine(0);
+
+stage.addEventListener('click', ()=>{ clearTimers(); hideBubbles(); brandLayer.classList.add('show'); });
+</script>
+
+</body>
+</html>
